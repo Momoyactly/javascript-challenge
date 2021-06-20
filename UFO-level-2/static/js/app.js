@@ -12,13 +12,14 @@ function handleChange(event) {
     values['city'] = d3.select("#city").property("value");
     values['state'] = d3.select("#state").property("value");
     values['country'] = d3.select("#country").property("value");
+    values['shape'] = d3.select("#shape").property("value");
     var filteredValues = Object.entries(values).filter(i =>i[1] != 0);
     table.text("");
     if (filteredValues != 0) {
         var filteredData = data;
         filteredValues.forEach(value =>{
-            filteredData = filteredData.filter(i =>i[value[0]] === value[1] );
-        } );
+            filteredData = filteredData.filter(i =>i[value[0]] === value[1]);
+        });
         filteredData.forEach(i => {
             var tr = table.append("tr");
             Object.values(i).forEach(j => {
